@@ -5,7 +5,7 @@ branches:
 
 before_install:
   - docker pull nginx:1.16.0
-  - docker run -d -d --name nginx-compiler nginx:1.15.12
+  - docker run -d -d --name nginx-compiler nginx:1.16.0
   - >
     "docker exec -it -u 0 nginx-compiler
     apt-get update
