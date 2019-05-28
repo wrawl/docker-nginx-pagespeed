@@ -7,7 +7,7 @@ before_install:
   - docker pull nginx:1.16.0
   - docker run -d -d --name nginx-compiler nginx:1.15.12
   - >
-    docker exec -it -u 0 nginx-compiler
+    "docker exec -it -u 0 nginx-compiler
     apt-get update
     && apt-get install -y unzip gcc make libpcre3-dev zlib1g-dev wget g++ uuid-dev git
     && export NGINX_VERSION=1.16.0
@@ -24,6 +24,6 @@ before_install:
     && tar -xzvf $(basename ${psol_url}) 
     && cd ../nginx-$NGINX_VERSION
     && ./configure --add-dynamic-module=../incubator-pagespeed-ngx-${NPS_VERSION}-beta --with-compat 
-    && make modules
+    && make modules"
   - docker cp nginx-compiler:/root/nginx-1.16.0/objs/ngx_pagespeed.so .
   - ls
