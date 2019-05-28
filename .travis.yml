@@ -8,8 +8,8 @@ before_install:
   - docker run -d -d --name nginx-compiler nginx:1.16.0
   - >
     docker exec -it -u 0 nginx-compiler
-    'apt-get update
-    && apt-get install -y unzip gcc make libpcre3-dev zlib1g-dev wget g++ uuid-dev git'
+    'apt-get update'
+    #&& apt-get install -y unzip gcc make libpcre3-dev zlib1g-dev wget g++ uuid-dev git'
     #&& export NGINX_VERSION=1.16.0
     #&& export NPS_VERSION=1.13.35.2
     #&& cd ~
