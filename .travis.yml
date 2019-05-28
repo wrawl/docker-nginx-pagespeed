@@ -13,6 +13,6 @@ before_install:
   - docker build -t wrawl/nginx-pagespeed .
 script:
   - docker images
-after_install:
+after_success:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASSWORD"
   - docker push wrawl/nginx-pagespeed
