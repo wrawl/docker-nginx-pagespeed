@@ -6,8 +6,7 @@ branches:
 before_install:
   - docker pull nginx:1.16.0
   - docker run -d -d --name nginx-compiler nginx:1.16.0
-  - >
-    docker exec -it -u 0 nginx-compiler
-    'apt-get update'
+  - docker cp ./build-pagespeed.sh nginx-compiler:/root/
+  - docker exec -it -u 0 nginx-compiler bash -c '/root/build-pagespeed.sh'
   - docker cp nginx-compiler:/root/nginx-1.16.0/objs/ngx_pagespeed.so .
   - ls
