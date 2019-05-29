@@ -14,4 +14,5 @@ Building is done on the Travis-CI (https://travis-ci.org).
 ## Notes
 - You will want to replace the *default.conf* configuration in /etc/nginx/conf.d/. This file is provided only as an example of Pagespeed configuration.  
 - If you need to override the default nginx.conf, following line should be kept:
+
         load_module "modules/ngx_pagespeed.so";
