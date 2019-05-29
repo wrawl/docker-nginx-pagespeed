@@ -1,7 +1,6 @@
 branches:
   only:
     - master
-    - preps
 
 before_install:
   - docker pull nginx:1.16.0
