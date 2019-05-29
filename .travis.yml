@@ -1,0 +1,17 @@
+branches:
+  only:
+    - master
+
+before_install:
+  - docker pull nginx:1.16.0
+  - docker run -d -d --name nginx-compiler nginx:1.16.0
+  - docker cp ./build-pagespeed.sh nginx-compiler:/root/
+  - docker exec -it -u 0 nginx-compiler bash -c '/root/build-pagespeed.sh'
+  - docker cp nginx-compiler:/root/nginx-1.16.0/objs/ngx_pagespeed.so .
+  - ls
+  - docker build -t wrawl/nginx-pagespeed:1.16.0.$TRAVIS_BUILD_NUMBER .
+script:
+  - docker images
+after_success:
+  - docker login --username "$DOCKER_USER" --password "$DOCKER_PASSWORD"
+  - docker push wrawl/nginx-pagespeed:1.16.0.$TRAVIS_BUILD_NUMBER
